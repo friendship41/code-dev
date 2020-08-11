@@ -10,6 +10,8 @@ public class AnalyseCodeServiceImpl implements AnalyseCodeService {
   public List<CodeInfo> analyseCode(final String rootPath) {
     FileSearchService fileSearch = new FileSearchServiceImpl();
     LineCountService lineCountService = new LineCountServiceJavaImpl();
+    StyleCheckService styleCheckService = new StyleCheckServiceImpl();
+
     List<File> fileList = fileSearch.getAllFile(rootPath, "java");
 
     List<CodeInfo> codeInfoList = new ArrayList<>();
@@ -21,6 +23,9 @@ public class AnalyseCodeServiceImpl implements AnalyseCodeService {
           .build()));
       lineCountService.countAllLine(codeInfoList);
     }
+
+    styleCheckService.checkStringRatio(codeInfoList);
+
     return codeInfoList;
   }
 }

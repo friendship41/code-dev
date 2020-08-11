@@ -15,35 +15,38 @@ public abstract class LineCountService {
     }
 
     for (CodeInfo codeInfo : codeInfoList) {
-      codeInfo.setLineCount(this.countFileLine(codeInfo.getFile()));
+      this.countFileLine(codeInfo);
     }
 
     return codeInfoList;
   }
 
-  private Long countFileLine(File file) {
+  private void countFileLine(CodeInfo codeInfo) {
 
     BufferedReader bufferedReader;
     try {
-      bufferedReader = new BufferedReader(new FileReader(file));
+      bufferedReader = new BufferedReader(new FileReader(codeInfo.getFile()));
     } catch (FileNotFoundException e) {
       e.printStackTrace();
-      return null;
+      return;
     }
 
     String line;
     Long result = 0L;
+    StringBuilder stringBuilder = new StringBuilder();
     try {
       while ((line = bufferedReader.readLine()) != null) {
+        stringBuilder.append(line.trim());
         if (this.filterStrategy(line)) {
           result++;
         }
       }
     } catch (IOException e) {
       e.printStackTrace();
-      return null;
+      return;
     }
-    return result;
+    codeInfo.setLineCount(result);
+    codeInfo.setContent(stringBuilder.toString());
   }
 
   protected abstract boolean filterStrategy(final String line);

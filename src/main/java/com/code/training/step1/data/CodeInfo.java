@@ -11,13 +11,16 @@ import lombok.Setter;
 public class CodeInfo {
   private File file;
   private String fileName;
+  private String content;
   private Long lineCount;
+  private float stringRatio;
 
   @Override
   public String toString() {
-    return "{" +
+    return "CodeInfo{" +
         "fileName='" + fileName + '\'' +
         ", lineCount=" + lineCount +
+        ", stringRatio=" + stringRatio +
         '}';
   }
 }
