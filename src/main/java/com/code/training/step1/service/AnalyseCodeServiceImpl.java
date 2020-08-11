@@ -25,6 +25,7 @@ public class AnalyseCodeServiceImpl implements AnalyseCodeService {
     }
 
     styleCheckService.checkStringRatio(codeInfoList);
+    styleCheckService.checkRemarkRatio(codeInfoList);
 
     return codeInfoList;
   }

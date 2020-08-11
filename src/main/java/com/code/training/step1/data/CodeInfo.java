@@ -14,6 +14,7 @@ public class CodeInfo {
   private String content;
   private Long lineCount;
   private float stringRatio;
+  private float remarkRatio;
 
   @Override
   public String toString() {
@@ -21,6 +22,7 @@ public class CodeInfo {
         "fileName='" + fileName + '\'' +
         ", lineCount=" + lineCount +
         ", stringRatio=" + stringRatio +
+        ", remarkRatio=" + remarkRatio +
         '}';
   }
 }
