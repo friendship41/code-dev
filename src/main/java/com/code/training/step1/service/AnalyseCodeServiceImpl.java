@@ -7,12 +7,12 @@ import java.util.List;
 
 public class AnalyseCodeServiceImpl implements AnalyseCodeService {
   @Override
-  public List<CodeInfo> analyseCode(final String rootPath) {
+  public List<CodeInfo> analyseCode(final String rootPath, final String extension) {
     FileSearchService fileSearch = new FileSearchServiceImpl();
     LineCountService lineCountService = new LineCountServiceJavaImpl();
     StyleCheckService styleCheckService = new StyleCheckServiceImpl();
 
-    List<File> fileList = fileSearch.getAllFile(rootPath, "java");
+    List<File> fileList = fileSearch.getAllFile(rootPath, extension);
 
     List<CodeInfo> codeInfoList = new ArrayList<>();
     if (fileList != null) {
@@ -26,6 +26,7 @@ public class AnalyseCodeServiceImpl implements AnalyseCodeService {
 
     styleCheckService.checkStringRatio(codeInfoList);
     styleCheckService.checkRemarkRatio(codeInfoList);
+    styleCheckService.checkWordRanking(codeInfoList);
 
     return codeInfoList;
   }

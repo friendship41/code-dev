@@ -1,6 +1,7 @@
 package com.code.training.step1.data;
 
 import java.io.File;
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ public class CodeInfo {
   private Long lineCount;
   private float stringRatio;
   private float remarkRatio;
+  private List<WordInfo> wordInfoList;
 
   @Override
   public String toString() {
@@ -23,6 +25,7 @@ public class CodeInfo {
         ", lineCount=" + lineCount +
         ", stringRatio=" + stringRatio +
         ", remarkRatio=" + remarkRatio +
+        ", wordInfoList=" + wordInfoList +
         '}';
   }
 }

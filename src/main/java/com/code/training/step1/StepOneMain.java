@@ -10,7 +10,7 @@ public class StepOneMain {
     AnalyseCodeService analyseCodeService = new AnalyseCodeServiceImpl();
     List<CodeInfo> codeInfoList = analyseCodeService.analyseCode(
         "D:\\1_workspace\\intelliJ\\comingsoon\\" +
-            "src\\main\\java\\com\\web\\comingsoon");
+            "src\\main\\java\\com\\web\\comingsoon", "java");
     codeInfoList.forEach(System.out::println);
   }
 }

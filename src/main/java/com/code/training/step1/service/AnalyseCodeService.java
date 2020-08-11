@@ -4,5 +4,5 @@ import com.code.training.step1.data.CodeInfo;
 import java.util.List;
 
 public interface AnalyseCodeService {
-  List<CodeInfo> analyseCode(String rootPath);
+  List<CodeInfo> analyseCode(String rootPath, String extension);
 }
